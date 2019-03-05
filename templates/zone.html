@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content=" L E A F ">
+    <meta name="author" content="Greg Smith">
+
+    <title> L E A F </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/product.css') }}" rel="stylesheet">
+    
+  </head>
+
+  <body>
+
+    <nav class="site-header sticky-top py-1">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2" href="/">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+          <!--<img src="..." alt="..." class="img-thumbnail"> -->
+        </a>
+        <a class="py-2 d-none d-md-inline-block" href="/zones">Zones</a>
+        <a class="py-2 d-none d-md-inline-block" href="/schedule">Schedule</a>
+        <a class="py-2 d-none d-md-inline-block" href="/weather">Weather</a>
+        <a class="py-2 d-none d-md-inline-block" href="/statistics">Statistics</a>
+        <a class="py-2 d-none d-md-inline-block" href="/settings">Settings</a>
+      </div>
+    </nav>
+
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+      <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 font-weight-normal">WATER</h1>
+        <p class="lead font-weight-normal">
+
+                {% for togglePin in togglePins %}
+                <p>The {{ togglePins[togglePin].name }} (ID{{ togglePins[togglePin].zone }})
+                {% if togglePins[togglePin].state == true %}
+                   is currently on  <a class="btn btn-outline-danger btn-sm" href="/zone/{{togglePin}}/off">Turn off</a>
+                {% else %}
+                   is currently off  <a class="btn btn-outline-success btn-sm" href="/zone/{{togglePin}}/on">Turn on</a>
+                {% endif %}
+                </p>
+                {% endfor %}
+             
+                {% if message %}
+                <h2>{{ message }}</h2>
+                {% endif %}
+            
+        </p>
+      </div>
+    </div>
+
+    <footer>
+
+        <div class="footer-copyright text-center py-3">&copy; 2018 Greg Smith - Prototype
+        <a href="/todo"> v0.1</a>
+      </div>
+
+  </footer>
+
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.slim.min.js') }}"></script>    
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/holder.min.js') }}"></script>
+
+<script>
+  Holder.addTheme('thumb', {
+    bg: '#55595c',
+    fg: '#eceeef',
+    text: 'Thumbnail'
+  });
+</script>
+
+</body>
+</html>
