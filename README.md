@@ -16,5 +16,4 @@ Excho Axis, [EchoAxis](https://github.com/echoaxis)
 
 ## License
 
-Copyright 2018, Exho Axis
 **L E A F** is released under the [MIT License](http://www.opensource.org/licenses/MIT).
